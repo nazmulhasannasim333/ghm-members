@@ -15,5 +15,7 @@ router.post(
 );
 
 router.get("/get-all-members", MemberController.getAllMember);
+router.get("/get-paid-members", MemberController.getPaidMember);
+router.get("/get-unpaid-members", MemberController.getUnpaidMember);
 
 export const MemberRoutes = router;

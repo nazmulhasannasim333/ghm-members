@@ -26,4 +26,31 @@ const getAllMember = catchAsync(async (req, res) => {
   });
 });
 
-export const MemberController = { createMember, getAllMember };
+const getPaidMember = catchAsync(async (req, res) => {
+  const result = await MemberServices.getPaidMemberFromDB();
+  //   send response
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "Paid member retrieved successfully",
+    data: result,
+  });
+});
+
+const getUnpaidMember = catchAsync(async (req, res) => {
+  const result = await MemberServices.getUnpaidMemberFromDB();
+  //   send response
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "Unpaid member retrieved successfully",
+    data: result,
+  });
+});
+
+export const MemberController = {
+  createMember,
+  getAllMember,
+  getPaidMember,
+  getUnpaidMember,
+};

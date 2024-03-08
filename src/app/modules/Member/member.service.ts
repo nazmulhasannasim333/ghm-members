@@ -17,7 +17,19 @@ const getAllMemberFromDB = async () => {
   return result;
 };
 
+const getPaidMemberFromDB = async () => {
+  const result = await Member.find({ paymentStatus: true });
+  return result;
+};
+
+const getUnpaidMemberFromDB = async () => {
+  const result = await Member.find({ paymentStatus: false });
+  return result;
+};
+
 export const MemberServices = {
   createMemberIntoDB,
   getAllMemberFromDB,
+  getPaidMemberFromDB,
+  getUnpaidMemberFromDB,
 };
